@@ -2,19 +2,20 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import { handleInitialData } from '../actions/shared';
+import { handleInitialUserData, handleInitialQuestionData } from '../actions/shared';
 import NewQuestion from './NewQuestion';
 import LeaderBoard from './LeaderBoard';
 import Home from './Home';
 import Nav from './Nav';
-
+import PollDetails from './PollDetails';
 import LogIn from './LogIn';
 import '../App.css';
 
 class App extends Component {
 
   componentDidMount() {
-    this.props.dispatch(handleInitialData());
+    this.props.dispatch(handleInitialUserData());
+    this.props.dispatch(handleInitialQuestionData());
   }
 
   render() {
@@ -27,6 +28,7 @@ class App extends Component {
           <Route path='/home' component={Home} />
           <Route path='/add' component={NewQuestion} />
           <Route path='/leaderboard' component={LeaderBoard} />
+          <Route path='/question/:id' component={PollDetails} />
         </Switch>
       </Router>
     );

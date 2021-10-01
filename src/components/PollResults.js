@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
-class Vote extends Component {
+class PollResults extends Component {
 
     render() {
         const { authedUser } = this.props;
@@ -15,7 +15,7 @@ class Vote extends Component {
             );
         }
         else {
-            alert('you need to be logged in to vote');
+            alert('you need to be logged in to see poll results');
             return (
                 <Redirect to='/' />
             );
@@ -29,4 +29,4 @@ function mapStateToProps({ authedUser }) {
     }
 }
 
-export default connect(mapStateToProps)(Vote);
+export default connect(mapStateToProps)(PollResults);

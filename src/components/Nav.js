@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavLink, Link, withRouter } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { removeAuthedUser } from '../actions/authUser';
@@ -8,14 +8,24 @@ import { removeAuthedUser } from '../actions/authUser';
 
 class Nav extends Component {
 
+    user = 'Anonymous';
+
     handleLogOut = (e) => {
         e.preventDefault();
         const { dispatch } = this.props;
         dispatch(removeAuthedUser());
+        this.user = 'Anonymous';
         this.props.history.push('/');
     }
 
     render() {
+
+        const { authedUser } = this.props;
+
+        if(authedUser && Object.keys(authedUser).length > 0) {
+            this.user = authedUser.name;
+        }
+
         return (
             <nav className='nav'>
                 <ul>
@@ -40,6 +50,9 @@ class Nav extends Component {
                         </NavLink>
                     </li>
                     <li>
+                        {this.user}
+                    </li>
+                    <li>
                         <button onClick={this.handleLogOut}>LogOut</button>
                     </li>
                 </ul>
@@ -48,4 +61,10 @@ class Nav extends Component {
     }
 }
 
-export default withRouter(connect()(Nav));
+function mapStateToProps({ authedUser }) {
+    return {
+        authedUser,
+    }
+}
+
+export default withRouter(connect(mapStateToProps)(Nav));
