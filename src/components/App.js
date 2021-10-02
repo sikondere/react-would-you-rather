@@ -9,6 +9,7 @@ import Home from './Home';
 import Nav from './Nav';
 import PollDetails from './PollDetails';
 import LogIn from './LogIn';
+import ErrorPage from './ErrorPage';
 import '../App.css';
 
 class App extends Component {
@@ -29,6 +30,7 @@ class App extends Component {
           <Route path='/add' component={NewQuestion} />
           <Route path='/leaderboard' component={LeaderBoard} />
           <Route path='/question/:id' component={PollDetails} />
+          <Route path='/ErrorPage' component={ErrorPage} />
         </Switch>
       </Router>
     );

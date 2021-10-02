@@ -41,7 +41,6 @@ function mapStateToProps({ questions, users, authedUser }) {
 
     return {
         question_list,
-        authedUser,
         users,
     };
 }
