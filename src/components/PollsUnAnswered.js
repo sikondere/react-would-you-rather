@@ -5,12 +5,21 @@ import { Link, withRouter } from 'react-router-dom';
 class PollsUnAnswered extends Component {
 
     render() {
-        let { question_list} = this.props
+        let { question_list, authedUser, users } = this.props
         let polls = question_list.map((item) => {
             return <li key={item.id}>
-                <Link to={`/question/${item.id}`}>
-                    {String(new Date(item.timestamp))}
-                </Link>
+                <div>
+                    <p>{users[item.author].name} asks:</p>
+                    <p>Would you rather</p>
+                    <p>...{item.optionOne.text}...</p>
+                    <img
+                        src={users[item.author].avatarURL}
+                        alt={authedUser.name}
+                        style={{width:60,height:60}}
+                    />
+                    <br/>
+                    <Link to={`/question/${item.id}`}>View Poll</Link>
+                </div>
             </li>
         })
 
@@ -42,6 +51,7 @@ function mapStateToProps({ questions, users, authedUser }) {
     return {
         question_list,
         users,
+        authedUser,
     };
 }
 

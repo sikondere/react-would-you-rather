@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import { handleSavePoll } from '../actions/questions';
+import { answerPoll } from '../actions/users';
 
 class PollDetails extends Component {
 
@@ -14,9 +16,23 @@ class PollDetails extends Component {
         })
     };
 
+    handleSubmit = (e) => {
+        e.preventDefault()
+        const answer = this.state.option;
+        const { dispatch, id, authedUser } = this.props;
+
+        let response = {
+            qid: id,
+            answer,
+            authedUser: authedUser.id,
+        }
+        dispatch(handleSavePoll(response));
+        dispatch(answerPoll(response));
+    }
+
     render() {
 
-        const { authedUser, id, userAvatar, userName, answeredPoll,
+        const { authedUser, userAvatar, userName, answeredPoll, userChoice,
             questionOption1, questionOption2, option1AnswerCount, option2AnswerCount } = this.props;
 
         const votesOption1 = `${option1AnswerCount} / ${option1AnswerCount + option2AnswerCount}`;
@@ -38,18 +54,25 @@ class PollDetails extends Component {
                     <br />
                     { answeredPoll ?
                     <div>
-                        <p>{ questionOption1 }</p>
-                        <p>Number of votes {votesOption1}</p>
-                        <p>Percentage of votes {`${percentageOption1} %`}</p>
-                        <p>{ questionOption2 }</p>
-                        <p>Number of votes {votesOption2}</p>
-                        <p>Percentage of votes {`${percentageOption2} %`}</p>
-                    </div> :
+                        <div style={userChoice === 'optionOne' ?
+                            {fontWeight: 'normal'} : {fontWeight: 'bold'}}>
+                            <p>{ questionOption1 }</p>
+                            <p>Number of votes {votesOption1}</p>
+                            <p>Percentage of votes {`${percentageOption1} %`}</p>
+                        </div>
+                        <div style={userChoice === 'optionTwo' ?
+                            {fontWeight: 'normal'} : {fontWeight: 'bold'}}>
+                            <p>{ questionOption2 }</p>
+                            <p>Number of votes {votesOption2}</p>
+                            <p>Percentage of votes {`${percentageOption2} %`}</p>
+                        </div>
+                    </div>
+                    :
                     <div>
                         <input
                             type='radio'
                             onClick={this.handleOnClick}
-                            id='option1'
+                            id='optionOne'
                             name='options'
                             value={this.state.option1} />
                         <label htmlFor='option1'> { questionOption1 } </label>
@@ -57,12 +80,12 @@ class PollDetails extends Component {
                         <input
                             type='radio'
                             onClick={this.handleOnClick}
-                            id='option2'
+                            id='optionTwo'
                             name='options'
                             value={this.state.option2} />
                         <label htmlFor='option2'> { questionOption2 } </label>
                         <br />
-                        <button>Submit</button>
+                        <button onClick={this.handleSubmit}>Submit</button>
                     </div> }
                 </div>
             );
@@ -86,6 +109,7 @@ function mapStateToProps({ authedUser, users, questions }, props) {
     let option1AnswerCount = 0;
     let option2AnswerCount = 0;
     let answeredPoll = false;
+    let userChoice = '';
 
     if(id in questions) {
         question = questions[id];
@@ -98,6 +122,12 @@ function mapStateToProps({ authedUser, users, questions }, props) {
         if(questions[id].optionOne.votes.includes(authedUser.id) || questions[id].optionTwo.votes.includes(authedUser.id))
         {
             answeredPoll = true;
+            if(questions[id].optionOne.votes.includes(authedUser.id)) {
+                userChoice = 'optionOne';
+            }
+            else {
+                userChoice = 'optionTwo';
+            }
         }
     }
 
@@ -111,6 +141,7 @@ function mapStateToProps({ authedUser, users, questions }, props) {
         option1AnswerCount,
         option2AnswerCount,
         answeredPoll,
+        userChoice,
     };
 }
 
