@@ -1,4 +1,4 @@
-import { GET_QUESTIONS, SAVE_POLL } from "../actions/questions";
+import { GET_QUESTIONS, SAVE_POLL, NEW_POLL } from "../actions/questions";
 
 export default function questions(state={}, action) {
     switch(action.type) {
@@ -10,9 +10,6 @@ export default function questions(state={}, action) {
 
         case SAVE_POLL:
             const { qid, answer, authedUser } = action.payload;
-            console.log(qid)
-            console.log(answer)
-            console.log(authedUser)
             return {
                 ...state,
                 [qid]: {
@@ -22,6 +19,13 @@ export default function questions(state={}, action) {
                         votes: state[qid][answer].votes.concat([authedUser])
                     }
                 }
+            };
+
+        case NEW_POLL:
+            const { payload } = action;
+            return {
+                ...state,
+                [payload.id]: payload
             };
 
         default:

@@ -30,11 +30,6 @@ class Nav extends Component {
             <nav className='nav'>
                 <ul>
                     <li>
-                        <NavLink to='/' exact activeClassName='active'>
-                            LogIn
-                        </NavLink>
-                    </li>
-                    <li>
                         <NavLink to='/home' activeClassName='active'>
                             Home
                         </NavLink>
@@ -52,7 +47,7 @@ class Nav extends Component {
                     <li>
                         {this.user}
                     </li>
-                    <li>
+                    <li hidden={ Object.keys(authedUser).length < 1 ? true: false}>
                         <button onClick={this.handleLogOut}>LogOut</button>
                     </li>
                 </ul>

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import { handleInitialUserData, handleInitialQuestionData } from '../actions/shared';
-import NewQuestion from './NewQuestion';
+import NewPoll from './NewPoll';
 import LeaderBoard from './LeaderBoard';
 import Home from './Home';
 import Nav from './Nav';
@@ -27,7 +27,7 @@ class App extends Component {
         <Switch>
           <Route exact path='/' component={LogIn} />
           <Route path='/home' component={Home} />
-          <Route path='/add' component={NewQuestion} />
+          <Route path='/add' component={NewPoll} />
           <Route path='/leaderboard' component={LeaderBoard} />
           <Route path='/question/:id' component={PollDetails} />
           <Route path='/ErrorPage' component={ErrorPage} />

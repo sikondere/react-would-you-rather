@@ -1,7 +1,9 @@
-import { _saveQuestionAnswer } from '../data/_DATA';
+import { _saveQuestionAnswer, _saveQuestion } from '../data/_DATA';
+import { createdPoll } from './users';
 
 export const GET_QUESTIONS = 'GET_QUESTIONS';
 export const SAVE_POLL = 'SAVE_POLL';
+export const NEW_POLL = 'NEW_POLL';
 
 export function getQuestions(questions) {
     return ({
@@ -31,4 +33,21 @@ export function handleSavePoll(response) {
                 .then((answer) => dispatch(savePoll(response)))
         }
     );
+}
+
+function createPoll(newPoll) {
+    return ({
+        type: NEW_POLL,
+        payload: newPoll,
+    });
+}
+
+export function handleCreatePoll(newPoll) {
+    return (dispatch, getState) => {
+        return _saveQuestion(newPoll)
+            .then((response) =>{
+                dispatch(createPoll(response))
+                dispatch(createdPoll(response))
+            })
+    }
 }

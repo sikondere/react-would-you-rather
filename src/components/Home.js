@@ -28,7 +28,7 @@ class Home extends Component {
 
     render() {
         const { authedUser } = this.props;
-        console.log(`authed user ${authedUser}`);
+
         if(authedUser && Object.keys(authedUser).length > 0)
         {
             return (

@@ -1,4 +1,4 @@
-import { GET_USERS, USER_ANSWER_POLL } from "../actions/users";
+import { GET_USERS, USER_ANSWER_POLL, CREATED_POLL } from "../actions/users";
 
 export default function users(state={}, action) {
     switch(action.type) {
@@ -18,6 +18,16 @@ export default function users(state={}, action) {
                         ...state[authedUser].answers,
                         [qid]: answer
                     }
+                }
+            };
+
+        case CREATED_POLL:
+            const { payload } = action;
+            return {
+                ...state,
+                [payload.author]: {
+                    ...state[payload.author],
+                    questions: state[payload.author].questions.concat([payload.id])
                 }
             };
 
