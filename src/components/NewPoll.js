@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
 import { handleCreatePoll } from '../actions/questions';
-import { createdPoll } from '../actions/users';
 
 class NewQuestion extends Component {
 

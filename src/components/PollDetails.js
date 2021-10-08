@@ -52,6 +52,7 @@ class PollDetails extends Component {
                         style={{width:60,height:60}}
                     />
                     <br />
+                    <hr/>
                     { answeredPoll ?
                     <div>
                         <div style={userChoice === 'optionOne' ?
@@ -60,6 +61,7 @@ class PollDetails extends Component {
                             <p>Number of votes {votesOption1}</p>
                             <p>Percentage of votes {`${percentageOption1} %`}</p>
                         </div>
+                        <hr/>
                         <div style={userChoice === 'optionTwo' ?
                             {fontWeight: 'normal'} : {fontWeight: 'bold'}}>
                             <p>{ questionOption2 }</p>

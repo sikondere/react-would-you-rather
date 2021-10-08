@@ -19,6 +19,7 @@ class PollsAnswered extends Component {
                     />
                     <br/>
                     <Link to={`/question/${item.id}`}>View Poll</Link>
+                    <hr/>
                 </div>
             </li>
         })
