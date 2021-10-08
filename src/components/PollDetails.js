@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
 import { handleSavePoll } from '../actions/questions';
 import { answerPoll } from '../actions/users';
 
@@ -49,10 +50,9 @@ class PollDetails extends Component {
                     <img
                         src={userAvatar}
                         alt={userName}
-                        style={{width:60,height:60}}
+                        style={{width:100,height:100}}
                     />
-                    <br />
-                    <hr/>
+                    <hr />
                     { answeredPoll ?
                     <div>
                         <div style={userChoice === 'optionOne' ?
@@ -87,7 +87,7 @@ class PollDetails extends Component {
                             value={this.state.option2} />
                         <label htmlFor='option2'> { questionOption2 } </label>
                         <br />
-                        <button onClick={this.handleSubmit}>Submit</button>
+                        <Button variant="primary" onClick={this.handleSubmit}>Submit</Button>
                     </div> }
                 </div>
             );

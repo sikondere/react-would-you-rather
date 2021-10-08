@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 import { handleCreatePoll } from '../actions/questions';
 
 class NewQuestion extends Component {
@@ -45,23 +46,25 @@ class NewQuestion extends Component {
             return (
                 <div>
                     <h1>Would You Rather</h1>
-                    <form>
-                        <input
-                            type='text'
-                            name='optionOne'
-                            value={optionOne}
-                            onChange={this.handleOnChange}
-                            placeholder='Enter the 1st option'></input>
-                            <br />
-                        <input
-                            type='text'
-                            name='optionTwo'
-                            value={optionTwo}
-                            onChange={this.handleOnChange}
-                            placeholder='Enter the 2nd option'></input>
-                            <br />
-                        <button onClick={this.handleOnClick}>Submit</button>
-                    </form>
+                    <Form>
+                        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                            <Form.Control
+                                type='text'
+                                name='optionOne'
+                                value={optionOne}
+                                onChange={this.handleOnChange}
+                                placeholder='Enter the 1st option' />
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
+                            <Form.Control
+                                type='text'
+                                name='optionTwo'
+                                value={optionTwo}
+                                onChange={this.handleOnChange}
+                                placeholder='Enter the 2nd option' />
+                        </Form.Group>
+                        <Button variant="primary" onClick={this.handleOnClick}>Submit</Button>
+                    </Form>
                 </div>
             );
         }

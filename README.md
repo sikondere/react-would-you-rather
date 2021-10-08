@@ -1,70 +1,112 @@
-# Getting Started with Create React App
+# Would-You-Rather Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is an updated read me file for the MyReads Project. It contains a decription of the updated application fle structure.
+It also includes descriptions of the new React components that were added to the application.
 
-## Available Scripts
+## Installation and launch instructions
 
-In the project directory, you can run:
+This application was created with create-react-app.
+To run the application, execute the following commands in the following order
+from the application root directory:
 
-### `yarn start`
+* install all project dependencies with `npm install`
+* start the application with `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Project structure
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+This is a directory tree for the application. 
 
-### `yarn test`
+```bash
+├── README.md - This file.
+├── package.json # npm package manager file. It's unlikely that you'll need to modify this.
+├── public
+│   ├── favicon.ico # React Icon, You may change if you wish.
+│   └── index.html # DO NOT MODIFY
+└── src
+    ├── App.css # Styles for your app. Feel free to customize this as you desire.
+    ├── App.js # This is the root of your app. Contains static HTML right now.
+    ├──data
+    │   ├──DATA.js # A JavaScript API for the provided Udacity backend. Instructions for the methods are below.
+    ├── components
+    │   ├── App.js
+    │   ├── ErrorPage.js
+    │   ├── Home.js
+    │   ├── LeaderBoard.js
+    │   ├── Login.js
+    │   ├── Nav.js
+    │   ├── NewPoll.js
+    │   ├── PollDetails.js
+    │   ├── PollsAnswered.js
+    │   └── PollsUnAnswered.js
+    ├── index.css # Global styles. You probably won't need to change anything here.
+    └── index.js # You should not need to modify this file. It is used for DOM rendering only.
+    ├── actions
+    │     ├── authuser.js
+    │     ├── questions.js
+    │     ├── shared.js
+    │     ├── users.js
+    ├── middleware
+    │     ├── index.js
+    │     ├── logger.js
+    ├── reducers
+    │     ├── authedUser.js
+    │     ├── index.js
+    │     ├── questions.js
+    │     ├── users.js
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Custom React Components
 
-### `yarn build`
+### App
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+This is the main application component.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### ErrorPage
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+A component to show a 404 page not found error when a user tries to access
+a poll's detail page by tying the question id directly in the url.
 
-### `yarn eject`
+### Home
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Component that displays answered and unanswered polls and allows the user to
+alternate between viewing the two.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### LeaderBoard
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Component showing users sorted in descending order based on the sum of questions
+they have asked and answered.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### LogIn
 
-## Learn More
+Component with a dropdown list of existing users. Select a user and click the submit button
+to login to the application.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Nav
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+A component that provides navigation functionality to enable a user traverse
+different parts of the application.
 
-### Code Splitting
+### NewPoll
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+A component that provides a user with two text boxes to enter each of the 2 options
+for each question and save them to the backend.
 
-### Analyzing the Bundle Size
+### PollDetails
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+A component that shows the details of a selected poll. Either a form for a user
+to select an option if they had not answered  the question or a summary of the question
+if it already been answered.
 
-### Making a Progressive Web App
+### PollsAnswered
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+A list of all answered questions that is displayed on the home page, ordred by date / time
+created.
 
-### Advanced Configuration
+### PollsUnAnswered
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+A list of all unanswered questions that is displayed on the home page, ordred by date / time
+created.
 
-### Deployment
+## Create React App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app). You can find more information on how to perform common tasks [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).

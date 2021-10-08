@@ -8,6 +8,7 @@ import App from './components/App';
 import reportWebVitals from './reportWebVitals';
 import reducer from './reducers';
 import middleware from './middleware';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const store = createStore(reducer, middleware);
 

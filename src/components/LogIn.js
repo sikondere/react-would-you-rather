@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
 import { setAuthedUser } from '../actions/authUser';
 
 class LogIn extends Component {
@@ -30,12 +31,21 @@ class LogIn extends Component {
 
         return (
             <div>
-                <select
-                    ref = {(element) => { this.selectRef = element}}
-                    >
-                    {userList}
-                </select>
-                <button onClick={this.handleSubmit}>LogIn</button>
+                <Card style={{ width: '18rem' }}>
+                    <Card.Body>
+                        <Card.Title>Would-You-Rather</Card.Title>
+                        <Card.Text>
+                            Sign In
+                        </Card.Text>
+                        <select
+                            ref = {(element) => { this.selectRef = element}}
+                            >
+                            {userList}
+                        </select>
+                        <br/>
+                        <Button variant="primary" onClick={this.handleSubmit}>LogIn</Button>
+                    </Card.Body>
+                </Card>
             </div>
         );
     }

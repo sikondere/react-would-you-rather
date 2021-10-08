@@ -1,35 +1,39 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
+import Card from 'react-bootstrap/Card';
+import ListGroup from 'react-bootstrap/ListGroup';
 
 class PollsUnAnswered extends Component {
 
     render() {
         let { question_list, authedUser, users } = this.props
         let polls = question_list.map((item) => {
-            return <li key={item.id}>
-                <div>
-                    <p>{users[item.author].name} asks:</p>
-                    <p>Would you rather</p>
-                    <p>...{item.optionOne.text}...</p>
-                    <img
+            return <ListGroup.Item key={item.id}>
+                <Card style={{ width: '18rem' }}>
+                    <Card.Img
+                        variant="top"
                         src={users[item.author].avatarURL}
                         alt={authedUser.name}
-                        style={{width:60,height:60}}
+                        style={{width:100,height:100}}
                     />
-                    <br/>
-                    <Link to={`/question/${item.id}`}>View Poll</Link>
-                    <hr/>
-                </div>
-            </li>
+                    <Card.Body>
+                        <Card.Title><strong>{users[item.author].name} asks:</strong></Card.Title>
+                        <Card.Subtitle className="mb-2 text-muted"><strong>Would you rather</strong></Card.Subtitle>
+                        <Card.Text>
+                            ...{item.optionOne.text}...
+                        </Card.Text>
+                        <Link to={`/question/${item.id}`}>View Poll</Link>
+                    </Card.Body>
+                </Card>
+            </ListGroup.Item>
         })
 
         return (
             <div>
-                <h2>unanswered polls</h2>
-                <ul>
+                <ListGroup>
                     {polls}
-                </ul>
+                </ListGroup>
             </div>
         );
     }
