@@ -8,6 +8,11 @@ class LogIn extends Component {
 
     selectRef = null;
 
+    /**
+     * @description function to handle the user login
+     * @param {event} e -the observed event
+     * @listens event
+     */
     handleSubmit = (e) => {
         e.preventDefault();
         const { dispatch } = this.props;
@@ -20,7 +25,10 @@ class LogIn extends Component {
         }
     }
 
-
+    /**
+     * @description  renders the login page
+     * @returns an html element
+     */
     render() {
 
         let userList = this.props.userList.map((user) => {

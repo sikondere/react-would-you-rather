@@ -1,7 +1,8 @@
 # Would-You-Rather Project
 
-This is an updated read me file for the MyReads Project. It contains a decription of the updated application fle structure.
-It also includes descriptions of the new React components that were added to the application.
+This is an updated read me file for the Would-You-Rather Project. It contains a decription of
+the updated application fle structure. It also includes descriptions of the new React
+components that were added to the application.
 
 ## Installation and launch instructions
 
@@ -14,7 +15,7 @@ from the application root directory:
 
 ## Project structure
 
-This is a directory tree for the application. 
+This is a directory tree for the application.
 
 ```bash
 ├── README.md - This file.
@@ -29,18 +30,18 @@ This is a directory tree for the application.
     │   ├──DATA.js # A JavaScript API for the provided Udacity backend. Instructions for the methods are below.
     ├── components
     │   ├── App.js
-    │   ├── ErrorPage.js
-    │   ├── Home.js
-    │   ├── LeaderBoard.js
-    │   ├── Login.js
-    │   ├── Nav.js
-    │   ├── NewPoll.js
-    │   ├── PollDetails.js
-    │   ├── PollsAnswered.js
-    │   └── PollsUnAnswered.js
+    │   ├── ErrorPage.js # displays a page with a 404 page not found error
+    │   ├── Home.js # displays lists of unanswered and answered polls
+    │   ├── LeaderBoard.js # list of users ordered by number of questions asked and answered
+    │   ├── Login.js # application login page
+    │   ├── Nav.js # navigation menu for the application
+    │   ├── NewPoll.js #  component to create a new question
+    │   ├── PollDetails.js # displays detail of a poll
+    │   ├── PollsAnswered.js # list of answered questions by logged in user
+    │   └── PollsUnAnswered.js # list of unanswered questions for the logged in user
     ├── index.css # Global styles. You probably won't need to change anything here.
     └── index.js # You should not need to modify this file. It is used for DOM rendering only.
-    ├── actions
+    ├── actions # actions and action creators
     │     ├── authuser.js
     │     ├── questions.js
     │     ├── shared.js
@@ -48,7 +49,7 @@ This is a directory tree for the application.
     ├── middleware
     │     ├── index.js
     │     ├── logger.js
-    ├── reducers
+    ├── reducers # reducers
     │     ├── authedUser.js
     │     ├── index.js
     │     ├── questions.js

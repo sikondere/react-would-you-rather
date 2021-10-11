@@ -1,5 +1,11 @@
 import { GET_USERS, USER_ANSWER_POLL, CREATED_POLL } from "../actions/users";
 
+ /**
+     * @description a method updates the users state in the store
+     * @param {object} state
+     * @param {object} action
+     * @returns {object} new state
+     */
 export default function users(state={}, action) {
     switch(action.type) {
         case GET_USERS:

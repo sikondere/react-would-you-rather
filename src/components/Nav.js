@@ -9,6 +9,11 @@ class Nav extends Component {
 
     user = 'Anonymous';
 
+    /**
+     * @description function to handle when a user logs out of the application
+     * @param {event} e -the observed event
+     * @listens event
+     */
     handleLogOut = (e) => {
         e.preventDefault();
         const { dispatch } = this.props;
@@ -17,6 +22,10 @@ class Nav extends Component {
         this.props.history.push('/');
     }
 
+    /**
+     * @description  renders the application navigation menu
+     * @returns an html element
+     */
     render() {
 
         const { authedUser } = this.props;

@@ -6,6 +6,10 @@ import ListGroup from 'react-bootstrap/ListGroup';
 
 class PollsUnAnswered extends Component {
 
+    /**
+     * @description  renders the list of polls not answered by the loggedin user
+     * @returns an html element
+     */
     render() {
         let { question_list, authedUser, users } = this.props
         let polls = question_list.map((item) => {

@@ -5,6 +5,11 @@ export const GET_QUESTIONS = 'GET_QUESTIONS';
 export const SAVE_POLL = 'SAVE_POLL';
 export const NEW_POLL = 'NEW_POLL';
 
+ /**
+     * @description a method that returns action object to get all questions
+     * @param {object} questions
+     * @returns {object} an action
+     */
 export function getQuestions(questions) {
     return ({
         type: GET_QUESTIONS,
@@ -12,6 +17,11 @@ export function getQuestions(questions) {
     });
 }
 
+ /**
+     * @description a method that returns an action object to save a new poll
+     * @param {object} response
+     * @returns {object} an action
+     */
 function savePoll(response) {
     console.log(response)
     return ({
@@ -20,6 +30,11 @@ function savePoll(response) {
     });
 }
 
+ /**
+     * @description a thunk to ansyncronously save a poll
+     * @param {object} response
+     * @returns {function} _saveQuestionAnswer
+     */
 export function handleSavePoll(response) {
     const { qid, answer, authedUser } = response;
     return (
@@ -35,6 +50,11 @@ export function handleSavePoll(response) {
     );
 }
 
+ /**
+     * @description a method that returns an action to create a new poll
+     * @param {object} newPoll
+     * @returns {object} an action
+     */
 function createPoll(newPoll) {
     return ({
         type: NEW_POLL,
@@ -42,6 +62,11 @@ function createPoll(newPoll) {
     });
 }
 
+ /**
+     * @description a thunk to ansyncronously save a poll
+     * @param {object} newPoll
+     * @returns {function} _saveQuestion
+     */
 export function handleCreatePoll(newPoll) {
     return (dispatch, getState) => {
         return _saveQuestion(newPoll)

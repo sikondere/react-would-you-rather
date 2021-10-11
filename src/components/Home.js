@@ -8,6 +8,12 @@ import PollsUnAnswered from './PollsUnAnswered';
 
 class Home extends Component {
 
+    /**
+     * @description  renders the main page that shows books on a user's shelf categorized into:  read, currently reading
+     * or want to read shelfs
+     * @returns an html element
+     */
+
     render() {
         const { authedUser } = this.props;
 

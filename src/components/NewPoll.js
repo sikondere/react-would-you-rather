@@ -12,6 +12,12 @@ class NewQuestion extends Component {
         optionTwo: '',
     };
 
+    /**
+     * @description function to handle when a user chnages the book from one shelf to another
+     * or removes a book from  their shelves
+     * @param {event} e -the observed event
+     * @listens event
+     */
     handleOnClick = (e) => {
         e.preventDefault();
         const { dispatch, authedUser } = this.props;
@@ -26,6 +32,12 @@ class NewQuestion extends Component {
         this.props.history.push('/home');
     };
 
+    /**
+     * @description function to update the component state as a user types into the
+     * input fields
+     * @param {event} e -the observed event
+     * @listens event
+     */
     handleOnChange = (e) => {
         const name = e.target.name;
         const value = e.target.value;
@@ -37,6 +49,10 @@ class NewQuestion extends Component {
         });
     };
 
+    /**
+     * @description  renders the form for the user to create a new poll
+     * @returns an html element
+     */
     render() {
         const { authedUser } = this.props;
         const {optionOne, optionTwo } = this.state;

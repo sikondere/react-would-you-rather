@@ -1,5 +1,11 @@
 import { GET_QUESTIONS, SAVE_POLL, NEW_POLL } from "../actions/questions";
 
+ /**
+     * @description a method updates the questions state in the store
+     * @param {object} state
+     * @param {object} action
+     * @returns {object} new state
+     */
 export default function questions(state={}, action) {
     switch(action.type) {
         case GET_QUESTIONS:

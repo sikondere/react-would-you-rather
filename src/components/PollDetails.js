@@ -11,12 +11,22 @@ class PollDetails extends Component {
         option:''
     }
 
+    /**
+     * @description function to handle when a user clicks a radio button
+     * @param {event} e -the observed event
+     * @listens event
+     */
     handleOnClick = (e) => {
         this.setState({
             option: e.target.id,
         })
     };
 
+    /**
+     * @description function to handle saves an anser to a question
+     * @param {event} e -the observed event
+     * @listens event
+     */
     handleSubmit = (e) => {
         e.preventDefault()
         const answer = this.state.option;
@@ -31,6 +41,11 @@ class PollDetails extends Component {
         dispatch(answerPoll(response));
     }
 
+    /**
+     * @description  renders the details page that either shows a summary of a poll
+     * or a form for a user to submit an answer to a poll
+     * @returns an html element
+     */
     render() {
 
         const { authedUser, userAvatar, userName, answeredPoll, userChoice,
@@ -56,14 +71,14 @@ class PollDetails extends Component {
                     { answeredPoll ?
                     <div>
                         <div style={userChoice === 'optionOne' ?
-                            {fontWeight: 'normal'} : {fontWeight: 'bold'}}>
+                            {fontWeight: 'bold'} : {fontWeight: 'normal'}}>
                             <p>{ questionOption1 }</p>
                             <p>Number of votes {votesOption1}</p>
                             <p>Percentage of votes {`${percentageOption1} %`}</p>
                         </div>
                         <hr/>
                         <div style={userChoice === 'optionTwo' ?
-                            {fontWeight: 'normal'} : {fontWeight: 'bold'}}>
+                            {fontWeight: 'bold'} : {fontWeight: 'normal'}}>
                             <p>{ questionOption2 }</p>
                             <p>Number of votes {votesOption2}</p>
                             <p>Percentage of votes {`${percentageOption2} %`}</p>
@@ -76,16 +91,16 @@ class PollDetails extends Component {
                             onClick={this.handleOnClick}
                             id='optionOne'
                             name='options'
-                            value={this.state.option1} />
-                        <label htmlFor='option1'> { questionOption1 } </label>
+                            value={this.state.option} />
+                        <label htmlFor='optionOne'> { questionOption1 } </label>
                         <br />
                         <input
                             type='radio'
                             onClick={this.handleOnClick}
                             id='optionTwo'
                             name='options'
-                            value={this.state.option2} />
-                        <label htmlFor='option2'> { questionOption2 } </label>
+                            value={this.state.option} />
+                        <label htmlFor='optionTwo'> { questionOption2 } </label>
                         <br />
                         <Button variant="primary" onClick={this.handleSubmit}>Submit</Button>
                     </div> }

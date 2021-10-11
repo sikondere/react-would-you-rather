@@ -1,6 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+/**
+     * @description  renders the 404 pAGE NOT FOUND ERROR
+     * @returns an html element
+     */
 export default function ErrorPage(props) {
     return (
         <div>

@@ -6,6 +6,11 @@ import ListGroup from 'react-bootstrap/ListGroup';
 
 class LeaderBoard extends Component {
 
+    /**
+     * @description  renders the leaderboard showing a list of users ordered
+     * by the sum of questions they have askd and answered
+     * @returns an html element
+     */
     render() {
 
         const { authedUser, user_list } = this.props;
